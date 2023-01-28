@@ -6,7 +6,7 @@
 apply plugin: "com.android.library"
 apply plugin: "kotlin-android"
 apply plugin: "kotlin-kapt"
-apply plugin: "'com.google.dagger.hilt.android"
+apply plugin: "com.google.dagger.hilt.android"
 
 apply from: rootProject.file('build-configuration/detekt.gradle')
 apply from: rootProject.file('build-configuration/ktlint.gradle')
