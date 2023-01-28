@@ -1,0 +1,34 @@
+apply from: configs.androidLibrary
+apply plugin: 'checkstyle'
+apply from: 'local.gradle'
+
+if (!file('local.gradle').exists()) {
+    exec {
+        commandLine("sh")
+        args = listOf("-c", "cp local.gradle.example local.gradle")
+    }
+}
+
+android {
+    namespace("com.components.network")
+}
+dependencies {
+    //Network
+    implementation(libs.ktor.core)
+    implementation(libs.ktor.client.okhttp)
+    implementation(libs.ktor.logging)
+    implementation(libs.ktor.content.negotiation)
+    implementation(libs.ktor.json)
+    //Coroutines
+    implementation(libs.kotlinx.coroutines.core)
+    implementation(libs.kotlinx.coroutines.android)
+    //JSON
+    implementation(libs.kotlinx.serialization.json)
+    //DI
+    ktlint libs.ktlint
+
+}
+
+detekt {
+    config = files("../../detekt/config.yml")
+}

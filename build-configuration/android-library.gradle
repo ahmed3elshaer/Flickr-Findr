@@ -5,6 +5,8 @@
  */
 apply plugin: "com.android.library"
 apply plugin: "kotlin-android"
+apply plugin: "kotlin-kapt"
+apply plugin: "'com.google.dagger.hilt.android"
 
 apply from: rootProject.file('build-configuration/detekt.gradle')
 apply from: rootProject.file('build-configuration/ktlint.gradle')
@@ -42,8 +44,17 @@ android {
 }
 
 dependencies {
+    implementation(libs.hilt.android)
+    kapt(libs.hilt.compiler)
+    testImplementation(libs.hilt.android.test)
     testImplementation(libs.junit)
     testImplementation(libs.mockk.android)
     testImplementation(libs.kotlinx.coroutines.test)
     testImplementation(libs.turbine)
+}
+kapt {
+    correctErrorTypes true
+}
+hilt {
+    enableAggregatingTask = true
 }
