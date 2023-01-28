@@ -154,7 +154,7 @@ fun AppTheme(
     content = content
 )
 
-
+@Suppress("CyclomaticComplexMethod")
 @Composable
 internal fun AppTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),
@@ -169,6 +169,7 @@ internal fun AppTheme(
             val context = LocalContext.current
             if (darkTheme) dynamicDarkColorScheme(context) else dynamicLightColorScheme(context)
         }
+
         else -> if (darkTheme) DarkDefaultColorScheme else LightDefaultColorScheme
     }
     // Gradient colors
@@ -200,7 +201,7 @@ internal fun AppTheme(
         MaterialTheme(
             colorScheme = colorScheme,
             typography = typography,
-            shapes= shapes,
+            shapes = shapes,
             content = content
         )
     }
