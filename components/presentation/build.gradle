@@ -1,0 +1,18 @@
+apply from: configs.androidLibrary
+apply plugin: 'checkstyle'
+
+android {
+    namespace("com.components.presentation")
+}
+
+dependencies {
+    implementation(libs.androidx.viewmodel)
+    //Coroutines
+    implementation(libs.kotlinx.coroutines.core)
+    ktlint libs.ktlint
+
+}
+
+detekt {
+    config = files("../../detekt/config.yml")
+}

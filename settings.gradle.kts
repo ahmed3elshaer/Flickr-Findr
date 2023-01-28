@@ -16,3 +16,4 @@ enableFeaturePreview("VERSION_CATALOGS")
 include(":app")
 
 include(":components:network")
+include(":components:presentation")

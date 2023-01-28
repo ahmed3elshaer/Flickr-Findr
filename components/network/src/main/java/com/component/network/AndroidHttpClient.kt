@@ -1,22 +1,22 @@
 package com.component.network
 
-import android.util.Log
-import io.ktor.client.*
+import com.components.network.BuildConfig
+import io.ktor.client.HttpClient
 import io.ktor.client.engine.HttpClientEngine
 import io.ktor.client.engine.okhttp.OkHttp
-import io.ktor.client.engine.okhttp.OkHttpEngine
 import io.ktor.client.plugins.contentnegotiation.ContentNegotiation
 import io.ktor.client.plugins.defaultRequest
-import io.ktor.client.plugins.logging.*
+import io.ktor.client.plugins.logging.LogLevel
+import io.ktor.client.plugins.logging.Logger
+import io.ktor.client.plugins.logging.Logging
 import io.ktor.client.request.header
 import io.ktor.http.URLProtocol
 import io.ktor.serialization.kotlinx.json.json
 import kotlinx.serialization.json.Json
-import java.util.concurrent.TimeUnit
 
 fun httpClient(withLog: Boolean, engine: HttpClientEngine = OkHttp.create()) = HttpClient(engine) {
     defaultRequest {
-        host = "api.foursquare.com/v3"
+        host = "flickr.com/services/rest/"
         url {
             protocol = URLProtocol.HTTPS
         }
