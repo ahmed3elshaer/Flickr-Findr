@@ -34,4 +34,5 @@ allprojects {
 
 ext.configs = [
         androidLibrary: "${project.rootDir}/build-configuration/android-library.gradle",
+        androidApp: "${project.rootDir}/build-configuration/android-app.gradle",
 ]

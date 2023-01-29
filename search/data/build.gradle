@@ -1,0 +1,25 @@
+apply from: configs.androidLibrary
+apply plugin: "org.jetbrains.kotlin.plugin.parcelize"
+apply plugin: 'org.jetbrains.kotlin.plugin.serialization'
+apply plugin: 'kotlin-kapt'
+apply plugin: 'checkstyle'
+
+android {
+    namespace("com.search.data")
+}
+dependencies {
+    implementation(project(":search:domain"))
+    implementation(libs.kotlinx.coroutines.core)
+    implementation(libs.kotlinx.serialization.json)
+    implementation(libs.room.runtime)
+    implementation(libs.room.ktx)
+    kapt(libs.room.compiler)
+    implementation(libs.ktor.core)
+    implementation(libs.androidx.paging)
+    ktlint(libs.ktlint)
+    testImplementation(libs.ktor.mock)
+}
+
+detekt {
+    config = files("../../detekt/config.yml")
+}

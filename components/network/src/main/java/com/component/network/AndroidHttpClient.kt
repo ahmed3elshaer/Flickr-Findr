@@ -14,15 +14,18 @@ import io.ktor.http.URLProtocol
 import io.ktor.serialization.kotlinx.json.json
 import kotlinx.serialization.json.Json
 
-fun httpClient(withLog: Boolean, engine: HttpClientEngine = OkHttp.create()) = HttpClient(engine) {
+fun androidHttpClient(
+    withLog: Boolean,
+    engine: HttpClientEngine = OkHttp.create()
+) = HttpClient(engine) {
     defaultRequest {
         host = "flickr.com/services/rest/"
         url {
             protocol = URLProtocol.HTTPS
+            parameters.append("api_key", BuildConfig.API_KEY)
+            parameters.append("format", "json")
         }
-        header("Authorization", BuildConfig.API_KEY)
         header("Content-Type", "application/json")
-
     }
     if (withLog) {
         install(Logging) {
@@ -35,11 +38,13 @@ fun httpClient(withLog: Boolean, engine: HttpClientEngine = OkHttp.create()) = H
         }
     }
     install(ContentNegotiation) {
-        json(Json {
-            prettyPrint = true
-            isLenient = true
-            ignoreUnknownKeys = true
-            encodeDefaults = true
-        })
+        json(
+            Json {
+                prettyPrint = true
+                isLenient = true
+                ignoreUnknownKeys = true
+                encodeDefaults = true
+            }
+        )
     }
 }

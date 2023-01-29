@@ -3,5 +3,5 @@
  *
  * Don't add any configuration here that is not common to *every* android library.
  */
-apply plugin: "com.android.library"
+apply plugin: "com.android.application"
 apply from: rootProject.file('build-configuration/android-common.gradle')

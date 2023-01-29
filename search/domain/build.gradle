@@ -1,0 +1,18 @@
+apply from: configs.androidLibrary
+apply plugin: "org.jetbrains.kotlin.plugin.parcelize"
+apply plugin: 'org.jetbrains.kotlin.plugin.serialization'
+apply plugin: 'kotlin-kapt'
+apply plugin: 'checkstyle'
+
+android {
+    namespace("com.search.domain")
+}
+dependencies {
+    implementation(libs.kotlinx.coroutines.core)
+    implementation(libs.androidx.paging)
+    ktlint(libs.ktlint)
+}
+
+detekt {
+    config = files("../../detekt/config.yml")
+}
