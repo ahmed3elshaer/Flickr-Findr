@@ -15,7 +15,6 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 
-
 val LightDefaultColorScheme = lightColorScheme(
     primary = Purple40,
     onPrimary = Color.White,
@@ -100,7 +99,6 @@ val LightAndroidColorScheme = lightColorScheme(
     outline = GreenGray50
 )
 
-
 val DarkAndroidColorScheme = darkColorScheme(
     primary = Green80,
     onPrimary = Green20,
@@ -129,18 +127,13 @@ val DarkAndroidColorScheme = darkColorScheme(
     outline = GreenGray60
 )
 
-
 val LightAndroidGradientColors = GradientColors(container = DarkGreenGray95)
-
 
 val DarkAndroidGradientColors = GradientColors(container = Color.Black)
 
-
 val LightAndroidBackgroundTheme = BackgroundTheme(color = DarkGreenGray95)
 
-
 val DarkAndroidBackgroundTheme = BackgroundTheme(color = Color.Black)
-
 
 @Composable
 fun AppTheme(
