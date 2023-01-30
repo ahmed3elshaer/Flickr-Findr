@@ -3,9 +3,11 @@ apply plugin: 'kotlin-kapt'
 apply plugin: 'checkstyle'
 
 android {
-    namespace("com.search.domain")
+    namespace("com.search.presentation")
 }
 dependencies {
+    implementation(project(":components:presentation"))
+    implementation(project(":search:domain"))
     implementation(libs.kotlinx.coroutines.core)
     implementation(libs.androidx.paging)
     ktlint(libs.ktlint)
