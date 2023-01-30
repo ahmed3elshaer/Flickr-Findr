@@ -27,7 +27,6 @@ class SearchPhotosViewModel(
                 .filterIsInstance<SearchResult>()
                 .catch { emit(SearchResult.Error(it.message)) }
                 .onStart { emit(SearchResult.InFlight) }
-
         }
     }
 
