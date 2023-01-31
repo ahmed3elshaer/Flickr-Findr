@@ -21,5 +21,5 @@ sealed class PhotoSearchScreens(open val route: String) {
     }
 }
 
-fun String.decode() = URLDecoder.decode(this, "UTF-8")
-fun String.encode() = URLEncoder.encode(this, "UTF-8")
+fun String.decode(): String = URLDecoder.decode(this, "UTF-8")
+fun String.encode(): String = URLEncoder.encode(this, "UTF-8")

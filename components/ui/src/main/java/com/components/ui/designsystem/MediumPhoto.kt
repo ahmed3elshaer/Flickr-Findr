@@ -19,7 +19,7 @@ import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
 
 @Composable
-fun MediumPhoto(
+fun ThumbnailPhoto(
     title: String,
     url: String,
     onClick: () -> Unit
@@ -27,13 +27,14 @@ fun MediumPhoto(
     Card(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(vertical = 8.dp)
+            .padding(8.dp)
             .clickable { onClick() },
         shape = MaterialTheme.shapes.medium
     ) {
         AsyncImage(
             modifier = Modifier
-                .fillMaxWidth(),
+                .fillMaxWidth()
+                .height(100.dp),
             model = url,
             placeholder = rememberVectorPainter(image = Icons.Default.ImageSearch),
             error = rememberVectorPainter(image = Icons.Default.Error),
@@ -42,7 +43,10 @@ fun MediumPhoto(
         )
         Spacer(modifier = Modifier.height(8.dp))
         Text(
+            modifier = Modifier
+                .padding(16.dp),
             text = title,
+            maxLines = 1,
             style = MaterialTheme.typography.titleMedium,
             color = MaterialTheme.colorScheme.onSurface
         )

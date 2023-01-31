@@ -6,6 +6,7 @@ import com.components.presentation.ViewModel
 import com.search.domain.usecase.GetAllSearchTerms
 import com.search.domain.usecase.SearchPhotosByText
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.FlowPreview
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.filter
@@ -21,6 +22,7 @@ class SearchPhotosViewModel @Inject constructor(
     private val searchPhotosByText: SearchPhotosByText,
     private val getAllSearchTerms: GetAllSearchTerms
 ) : ViewModel<SearchAction, SearchResult, SearchState>(SearchState.Idle) {
+    @OptIn(FlowPreview::class)
     override suspend fun SearchAction.process(): Flow<SearchResult> {
         return when (this) {
             SearchAction.GetSearchTerms -> getAllSearchTerms()
@@ -37,13 +39,15 @@ class SearchPhotosViewModel @Inject constructor(
                         .onStart { emit(SearchResult.InFlight) }
                 }
                 .catch { emit(SearchResult.Error(it.message)) }
+
+            SearchAction.ClearResults -> flowOf(SearchResult.Idle)
         }
     }
 
     override fun SearchState.reduce(result: SearchResult): SearchState {
         return when (result) {
             is SearchResult.Error -> SearchState.Error(result.message)
-            SearchResult.Idle -> this
+            SearchResult.Idle -> SearchState.Idle
             SearchResult.InFlight -> SearchState.Loading
             is SearchResult.Photos -> SearchState.Photos(result.photos)
             is SearchResult.RecentSearchTerms -> SearchState.RecentSearchTerms(result.searchTerms)

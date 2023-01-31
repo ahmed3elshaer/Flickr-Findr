@@ -17,6 +17,7 @@ fun PhotoDetailsScreen(
 ) {
     Scaffold(topBar = {
         TopAppBar(
+            title = title,
             onBackPressed = onBackPressed
         )
     }) {

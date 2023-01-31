@@ -1,7 +1,7 @@
 package com.components.ui.designsystem
 
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.text.KeyboardActions
+import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.Icon
 import androidx.compose.material.IconButton
 import androidx.compose.material.OutlinedTextField
@@ -15,9 +15,12 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.focus.FocusRequester
 import androidx.compose.ui.focus.FocusState
+import androidx.compose.ui.focus.focusRequester
 import androidx.compose.ui.focus.onFocusChanged
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -30,10 +33,12 @@ fun PhotosSearchField(
     onTexChange: (TextFieldValue) -> Unit,
     onClear: () -> Unit,
     onFocusChange: (FocusState) -> Unit,
-    onSearch: () -> Unit
+    focusRequester: FocusRequester
 ) {
     OutlinedTextField(
-        modifier = modifier.onFocusChanged(onFocusChange),
+        modifier = modifier
+            .onFocusChanged(onFocusChange)
+            .focusRequester(focusRequester),
         value = query,
         onValueChange = onTexChange,
         label = { Text(text = stringResource(id = R.string.search_photos)) },
@@ -44,7 +49,7 @@ fun PhotosSearchField(
                 contentDescription = null
             )
         },
-        keyboardActions = KeyboardActions(onSearch = { onSearch() }),
+        keyboardOptions = KeyboardOptions(imeAction = ImeAction.None),
         trailingIcon = {
             IconButton(onClick = onClear) {
                 Icon(
@@ -66,6 +71,6 @@ fun PhotoSearchFieldPreview() {
         onTexChange = { query = it },
         onClear = { query = TextFieldValue() },
         onFocusChange = {},
-        onSearch = {}
+        focusRequester = FocusRequester()
     )
 }

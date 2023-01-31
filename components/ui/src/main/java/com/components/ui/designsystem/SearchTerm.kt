@@ -10,6 +10,7 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.search.domain.model.SearchTerm
 
@@ -27,8 +28,10 @@ fun SearchTerm(
     ) {
         Text(
             modifier = Modifier
-                .align(Alignment.Center),
+                .align(Alignment.CenterStart),
             text = searchTerm.text,
+            textAlign = TextAlign.Start,
+            maxLines = 1,
             style = MaterialTheme.typography.h6,
             color = MaterialTheme.colors.onSurface
         )
