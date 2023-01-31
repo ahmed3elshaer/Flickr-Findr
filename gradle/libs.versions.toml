@@ -43,12 +43,14 @@ androidx-compose-ui-tooling-preview = { module = "androidx.compose.ui:ui-tooling
 androidx-compose-foundation = { module = "androidx.compose.foundation:foundation", version.ref = "androidx-compose" }
 androidx-compose-material = { module = "androidx.compose.material:material", version.ref = "androidx-compose" }
 coil-compose = { module = "io.coil-kt:coil-compose", version.ref = "coil" }
+coil = { module = "io.coil-kt:coil", version.ref = "coil" }
 glide-compose = { module = "com.github.bumptech.glide:compose", version.ref = "glide" }
 activity-compose = { module = "androidx.activity:activity-compose", version.ref = "activity-compose" }
 accompanist-permissions = { module = "com.google.accompanist:accompanist-permissions", version.ref = "accompanist" }
 androidx-material-iconsExtended = { module = "androidx.compose.material:material-icons-extended", version.ref = "androidx-compose" }
 androidx-material3 = { module = "androidx.compose.material3:material3", version.ref = "androidx-material" }
 androidx-navigation-compose = { module = "androidx.navigation:navigation-compose", version.ref = "androidx-navigation" }
+androidx-viewmodel-runtime = { module = "androidx.lifecycle:lifecycle-viewmodel", version.ref = "lifecycle" }
 androidx-viewmodel = { module = "androidx.lifecycle:lifecycle-viewmodel-ktx", version.ref = "lifecycle" }
 androidx-viewmodel-compose = { module = "androidx.lifecycle:lifecycle-viewmodel-compose", version.ref = "lifecycle" }
 androidx-paging-compose = { module = "androidx.paging:paging-compose", version = "1.0.0-alpha17" }
@@ -91,5 +93,5 @@ mockk-android = { module = "io.mockk:mockk-android", version.ref = "mockk" }
 [bundles]
 plugins = ["plugin-android", "plugin-kotlin", "plugin-kotlin-serialization", "plugin-detekt", "plugin-hilt"]
 detekt = ["cli-detekt", "formatting-detekt"]
-compose = ["androidx-compose-ui", "androidx-compose-ui-tooling", "androidx-compose-ui-tooling-preview", "androidx-compose-foundation", "androidx-material3", "androidx-material-iconsExtended", "coil-compose", "activity-compose", "androidx-navigation-compose"]
+compose = ["androidx-compose-ui", "androidx-compose-ui-tooling", "androidx-compose-ui-tooling-preview", "androidx-compose-foundation", "androidx-material3", "androidx-material-iconsExtended", "coil-compose", "coil", "activity-compose", "androidx-navigation-compose"]
 

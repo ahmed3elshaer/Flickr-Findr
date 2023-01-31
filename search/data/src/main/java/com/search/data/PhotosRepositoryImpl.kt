@@ -16,7 +16,7 @@ import kotlinx.coroutines.flow.map
 internal class PhotosRepositoryImpl @Inject constructor(
     private val searchPhotosRemote: SearchPhotosRemote
 ) : PhotosRepository {
-    override fun searchPhotosByText(searchTerm: String): Flow<PagingData<Photo>> {
+    override fun searchPhotosByText(searchTerm: String): Pager<Int, Photo> {
         return Pager(
             config = PagingConfig(
                 pageSize = PageSize
@@ -24,12 +24,7 @@ internal class PhotosRepositoryImpl @Inject constructor(
             pagingSourceFactory = {
                 SearchPhotosPagingSource(searchRemote = searchPhotosRemote, searchTerm = searchTerm)
             }
-        ).flow.map { pagingData ->
-            pagingData
-                .map { photosApi ->
-                    photosApi.toDomain()
-                }
-        }
+        )
     }
 
     companion object {

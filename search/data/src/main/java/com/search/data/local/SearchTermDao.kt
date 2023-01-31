@@ -6,19 +6,18 @@ import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import com.search.data.local.model.SearchTermLocal
-import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface SearchTermDao {
     @Query("SELECT * FROM term")
-    fun getAll(): Flow<List<SearchTermLocal>>
+    suspend fun getAll(): List<SearchTermLocal>
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
-    fun insertAll(vararg terms: SearchTermLocal)
+    suspend fun insertAll(vararg terms: SearchTermLocal)
 
     @Query("DELETE FROM term")
-    fun deleteAll()
+    suspend fun deleteAll()
 
     @Delete
-    fun delete(searchTerm: SearchTermLocal)
+    suspend fun delete(searchTerm: SearchTermLocal)
 }

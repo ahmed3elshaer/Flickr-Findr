@@ -17,4 +17,5 @@ include(":app")
 
 include(":components:network")
 include(":components:presentation")
-include(":search:data",":search:domain",":search:presentation")
+include(":components:ui")
+include(":search:data",":search:domain",":search:presentation",":search:ui",":search:feature")

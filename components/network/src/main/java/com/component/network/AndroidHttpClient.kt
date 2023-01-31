@@ -24,6 +24,7 @@ fun androidHttpClient(
             protocol = URLProtocol.HTTPS
             parameters.append("api_key", BuildConfig.API_KEY)
             parameters.append("format", "json")
+            parameters.append("nojsoncallback", "1")
         }
         header("Content-Type", "application/json")
     }

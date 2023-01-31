@@ -1,5 +1,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools">
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
             android:allowBackup="false"
@@ -9,9 +10,8 @@
             android:supportsRtl="true"
             android:name=".FlickrApplication"
             tools:ignore="GoogleAppIndexingWarning">
-
         <activity
-                android:name="com.flickr.findr.MainActivity"
+                android:name="com.search.ui.MainActivity"
                 android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

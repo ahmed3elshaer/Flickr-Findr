@@ -1,9 +1,9 @@
 package com.search.domain.repository
 
-import androidx.paging.PagingData
+import androidx.paging.Pager
 import com.search.domain.model.Photo
-import kotlinx.coroutines.flow.Flow
+import javax.inject.Inject
 
 interface PhotosRepository {
-    fun searchPhotosByText(searchTerm: String): Flow<PagingData<Photo>>
+    fun searchPhotosByText(searchTerm: String): Pager<Int, Photo>
 }

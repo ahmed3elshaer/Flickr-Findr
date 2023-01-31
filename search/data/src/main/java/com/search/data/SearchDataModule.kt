@@ -6,6 +6,8 @@ import com.search.data.local.SearchTermDao
 import com.search.data.local.SearchTermDatabase
 import com.search.data.remote.SearchPhotosRemote
 import com.search.domain.repository.PhotosRepository
+import com.search.domain.repository.SearchTermsRepository
+import dagger.Binds
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -14,9 +16,9 @@ import dagger.hilt.components.SingletonComponent
 import io.ktor.client.HttpClient
 import javax.inject.Singleton
 
-@InstallIn(SingletonComponent::class)
 @Module
-object SearchDataModule {
+@InstallIn(SingletonComponent::class)
+internal object SearchDataModule {
     @Provides
     @Singleton
     fun provideDatabase(@ApplicationContext context: Context): SearchTermDatabase =
@@ -35,13 +37,22 @@ object SearchDataModule {
     fun provideSearchPhotosRemote(httpClient: HttpClient): SearchPhotosRemote {
         return SearchPhotosRemote(httpClient = httpClient)
     }
+}
 
-    @Provides
-    fun provideSearchPhotosRepository(
-        searchPhotosRemote: SearchPhotosRemote
-    ): PhotosRepository {
-        return PhotosRepositoryImpl(
-            searchPhotosRemote = searchPhotosRemote
-        )
-    }
+@Module
+@InstallIn(SingletonComponent::class)
+internal interface SearchRepositoriesBinds {
+
+    @Binds
+    @Singleton
+    fun bindPhotosRepositoryInterface(
+        photosRepositoryImpl: PhotosRepositoryImpl
+    ): PhotosRepository
+
+    @Binds
+    @Singleton
+    fun bindSearchTermsRepositoryInterface(
+        searchTermsRepositoryImpl: SearchTermsRepositoryImpl
+    ): SearchTermsRepository
+
 }

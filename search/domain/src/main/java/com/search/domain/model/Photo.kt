@@ -10,7 +10,7 @@ data class Photo(
 )
 
 fun Photo.mediumUrl() =
-    "https://farm$farm.staticflickr.com/$server/${id}_${secret}_c.jpg\n"
+    "https://farm$farm.staticflickr.com/$server/${id}_${secret}_t.jpg\n"
 
-fun Photo.originalUrl() =
-    "https://farm$farm.staticflickr.com/$server/${id}_${secret}_o.jpg\n"
+fun Photo.largeUrl() =
+    "https://farm$farm.staticflickr.com/$server/${id}_${secret}_b.jpg\n".also { println(it) }

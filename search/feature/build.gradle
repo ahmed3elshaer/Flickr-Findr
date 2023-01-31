@@ -1,0 +1,29 @@
+apply from: configs.androidLibrary
+apply plugin: 'checkstyle'
+
+android {
+    namespace("com.search.feature")
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+    buildFeatures {
+        compose true
+    }
+    composeOptions {
+        kotlinCompilerExtensionVersion '1.3.2'
+    }
+}
+
+dependencies {
+    api(project(":search:ui"))
+    api(project(":search:presentation"))
+}
+
+detekt {
+    config = files("../../detekt/config.yml")
+}

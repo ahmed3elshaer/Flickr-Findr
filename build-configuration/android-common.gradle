@@ -4,8 +4,8 @@
  * Don't add any configuration here that is not common to *every* android library.
  */
 apply plugin: "kotlin-android"
-apply plugin: "kotlin-kapt"
 apply plugin: "com.google.dagger.hilt.android"
+apply plugin: "kotlin-kapt"
 
 apply from: rootProject.file('build-configuration/detekt.gradle')
 apply from: rootProject.file('build-configuration/ktlint.gradle')
@@ -44,6 +44,8 @@ android {
 
 dependencies {
     implementation(libs.hilt.android)
+    implementation(libs.androidx.viewmodel)
+    implementation(libs.androidx.viewmodel.runtime)
     kapt(libs.hilt.compiler)
     testImplementation(libs.hilt.android.test)
     testImplementation(libs.junit)
